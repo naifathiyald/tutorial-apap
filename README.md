@@ -40,9 +40,9 @@ Perbedaan:
     - @RequestParam mengekstrak *value* dari *query* String, @PathVariable mengekstrak value dari URI path
     - @RequestParam mengekstrak *value* yang telah di-*encode*, @PathVariable mengekstrak value yang belum di-*encode*  
 ### What I did not understand
-- [] Konsep nyata `git merge --squash`
-- [] Konsep MVC secara *overall*
-- [] Teknik Dependecy Injection  
+- [ ] Konsep nyata `git merge --squash`
+- [ ] Konsep MVC secara *overall*
+- [ ] Teknik Dependecy Injection  
 Hal-hal yang masih belum paham, salah satunya adalah konsep nyata `git merge --squash`. Sampai saat ini (08/09), saya belum pernah 
 menggunakan cara tersebut ketika melakukan *merging* sehingga belum terlihat perbedaan yang signifikan antara `git merge` dan `git merge --squash`. 
 Selain itu, saya masih perlu mengingat kembali konsep MVC yang telah dipelajari di DDP2.
