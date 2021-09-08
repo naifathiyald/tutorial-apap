@@ -13,7 +13,7 @@ diselesaikan dengan Issue Tracker, antara lain menghubungkan issue ketika melaku
 request berhasil dimerge, issue yang terhubung akan ditutup.
 2. Apa perbedaan dari `git merge` dan `git merge --squash`?  
 Pada `git merge`, setiap commit pada branch akan ditambahkan menuju branch master melalui merge commit.
-Sedangkan pada `git merge -squash`, semua commit dari tiap branch akan diambil dan bergabung menjadi 1 squash tunggal 
+Sedangkan pada `git merge --squash`, semua commit dari tiap branch akan diambil dan bergabung menjadi 1 squash tunggal 
 menuju branch master. Apabila konflik ditemukan, kita dapat menyelesaikannya secara manual.
 3. Apa keunggulan menggunakan Version Control System seperti Git dalam pengembangan
 suatu aplikasi?  
@@ -41,7 +41,8 @@ Perbedaan:
     - @RequestParam mengekstrak *value* yang telah di-*encode*, @PathVariable mengekstrak value yang belum di-*encode*  
 ### What I did not understand
 Hal-hal yang masih belum paham, salah satunya adalah konsep nyata `git merge --squash`. Sampai saat ini (08/09), saya belum pernah 
-menggunakan cara tersebut ketika melakukan *merging*. Selain itu, saya masih perlu mengingat kembali konsep MVC yang telah dipelajari di DDP2.  
+menggunakan cara tersebut ketika melakukan *merging* sehingga belum terlihat perbedaan yang signifikan antara `git merge` dan `git merge --squash`.
+ Selain itu, saya masih perlu mengingat kembali konsep MVC yang telah dipelajari di DDP2.  
 - [x] Kenapa saya harus belajar APAP?
 Karena Arsitektur dan Pemrograman Aplikasi Perusahaan merupakan salah satu mata kuliah yang wajib saya ikuti sebagai 
 mahasiswa Fasilkom UI dan merupakan hal yang (menurut saya) wajib saya pahami agar dapat menjadi bekal untuk ke depannya.
