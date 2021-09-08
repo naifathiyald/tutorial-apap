@@ -22,7 +22,7 @@ sistem ini, kita dapat mengingat/melihat kembali versi yang belum diubah/dihapus
 Control System, kita dapat bekerja dengan tim secara efisien dengan adanya *branching* dan *merging*.
 ### Spring
 4. Apa itu library & dependency?  
-Library adalah kumpulan package yang berisi pengelompokkan kelas-kelas dan interface yang terkait. Dependency adalah 
+Library adalah kumpulan package yang berisi pengelompokkan kelas-kelas dan interface yang terkait dan dapat digunakan. Dependency adalah 
 sebuah objek/servis yang dapat digunakan. Sebuah aplikasi dibentuk dari banyak *layer*. Setiap *layer* bergantung pada 
 *layer* lainnya. Dependency merupakan *layer* yang digantungi.
 5. Apa itu Maven? Mengapa kita menggunakan Maven? Apakah ada alternatif dari Maven?  
