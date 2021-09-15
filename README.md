@@ -56,13 +56,13 @@ http://localhost:8080/agensi/add?idAgensi=1&namaAgensi=Papa%20APAP&alamat=Maung%
 Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.  
 <img width="1280" alt="pert1" src="https://user-images.githubusercontent.com/90308363/133433610-4f43e10e-66c6-40bf-ac58-82600c4a769e.png">  
 Pada saat mengakses *link*, kita ditujukan ke halaman Whitelabel Error Page. Hal tersebut dikarenakan View yang telah 
-dicantumkan pada Controller, yaitu `"add-agensi"` belum dibuat. Pada konsep MVC, View berfungsi untuk menampilkan tampilan kepada *client*. 
+dicantumkan pada Controller, yaitu `add-agensi` belum dibuat. Pada konsep MVC, View berfungsi untuk menampilkan tampilan kepada *client*. 
 Karena View (template HTML) belum dibuat, agensi tidak bisa ditambahkan.  
 
 2. Menurut kamu anotasi `@Autowired` pada class Controller tersebut merupakan implementasi dari konsep apa? 
 Dan jelaskan secara singkat cara kerja `@Autowired` tersebut dalam konteks service dan controller yang telah kamu buat.  
 @Autowired membolehkan kita untuk menyelesaikan dan meng-*inject* hal yang ingin dikolaborasikan. Implementasi ini merupakan 
-konsep dari **Dependency Injection**. Dengan @Autowired, Spring dapat meng-handle instansiasi dari suatu kelas.  
+konsep dari **Dependency Injection**. Dengan @Autowired, Spring dapat meng-*handle* instansiasi dari suatu kelas.  
 @Autowired memungkinkan kita mengelola servis dalam container dengan konfigurasi minimal. @Autowired akan membaca petunjuk 
 pada *method* dan secara otomatis meneruskan servis yang sesuai. Pada Controller, Spring akan mencari class yang propertinya 
 cocok dan akan meng-*inject* secara otomatis. 
