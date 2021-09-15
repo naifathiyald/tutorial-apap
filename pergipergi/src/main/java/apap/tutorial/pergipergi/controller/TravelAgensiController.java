@@ -32,7 +32,7 @@ public class TravelAgensiController {
         // Memanggil servis addAgensi
         travelAgensiService.addAgensi(agensi);
 
-        // Add variavel id agensi ke 'idAgensi' untuk dirender di thymeleaf
+        // Add variabel id agensi ke 'idAgensi' untuk dirender di thymeleaf
         model.addAttribute("idAgensi", idAgensi);
 
         // Return view template yang digunakan
@@ -90,7 +90,6 @@ public class TravelAgensiController {
             return "null-agensi";
         }
 
-        // Return view template yang diinginkan
         return detailAgensi(idAgensi, model);
     }
 
@@ -121,7 +120,6 @@ public class TravelAgensiController {
             return "null-agensi";
         }
 
-        // Return view template yang digunakan
         return updateAgensiPage(idAgensi, noTelepon, model);
     }
 
