@@ -50,30 +50,30 @@ Selain itu, saya masih perlu mengingat kembali konsep MVC yang telah dipelajari 
 ## Tutorial 2
 ### What I have learned today
 
-### Pertanyaan
+### Pertanyaan:
 1. Cobalah untuk menambahkan sebuah Agensi dengan mengakses link berikut:  
 http://localhost:8080/agensi/add?idAgensi=1&namaAgensi=Papa%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx  
 Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.  
 <img width="1280" alt="pert1" src="https://user-images.githubusercontent.com/90308363/133433610-4f43e10e-66c6-40bf-ac58-82600c4a769e.png">  
-Pada saat mengakses *link*, kita ditujukan ke halaman Whitelabel Error Page. Hal tersebut dikarenakan View yang telah 
-dicantumkan pada Controller, yaitu `add-agensi` belum dibuat. Pada konsep MVC, View berfungsi untuk menampilkan tampilan kepada *client*. 
+Pada saat mengakses link, kita ditujukan ke halaman Whitelabel Error Page. Hal tersebut dikarenakan View yang telah 
+dicantumkan pada Controller, yaitu `add-agensi` belum dibuat. Pada konsep MVC, View berfungsi untuk menampilkan tampilan kepada client. 
 Karena View (template HTML) belum dibuat, agensi tidak bisa ditambahkan.  
 
 2. Menurut kamu anotasi `@Autowired` pada class Controller tersebut merupakan implementasi dari konsep apa? 
 Dan jelaskan secara singkat cara kerja `@Autowired` tersebut dalam konteks service dan controller yang telah kamu buat.  
-@Autowired membolehkan kita untuk menyelesaikan dan meng-*inject* hal yang ingin dikolaborasikan. Implementasi ini merupakan 
-konsep dari **Dependency Injection**. Dengan @Autowired, Spring dapat meng-*handle* instansiasi dari suatu kelas.  
+@Autowired membolehkan kita untuk menyelesaikan dan meng-inject hal yang ingin dikolaborasikan. Implementasi ini merupakan 
+konsep dari **Dependency Injection**. Dengan @Autowired, Spring dapat meng-handle instansiasi dari suatu kelas.  
 @Autowired memungkinkan kita mengelola servis dalam container dengan konfigurasi minimal. @Autowired akan membaca petunjuk 
-pada *method* dan secara otomatis meneruskan servis yang sesuai. Pada Controller, Spring akan mencari class yang propertinya 
-cocok dan akan meng-*inject* secara otomatis. 
+pada method dan secara otomatis meneruskan servis yang sesuai. Pada Controller, Spring akan mencari class yang propertinya 
+cocok dan akan meng-inject secara otomatis. 
 
 3. Cobalah untuk menambahkan sebuah Agensi dengan mengakses link berikut:  
 http://localhost:8080/agensi/add?idAgensi=1&namaAgensi=Papa%20APAP&alamat=Maung%20Fasilkom  
 Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.  
 <img width="1280" alt="pert3" src="https://user-images.githubusercontent.com/90308363/133433751-fda8887a-5e6c-4822-bd61-215219d5a4b0.png">  
-Pada saat mengakses *link*, kita ditujukan ke halaman Whitelabel Error Page. Hal tersebut dikarenakan adanya kekurangan parameter 
-pada *link* yang dimasukkan. Untuk dapat menampilkan halaman yang sesuai, dibutuhkan parameter yang lengkap. Pada kasus ini, 
-noTelepon tidak dimasukkan sehingga muncul *error*.
+Pada saat mengakses link, kita ditujukan ke halaman Whitelabel Error Page. Hal tersebut dikarenakan adanya kekurangan parameter 
+pada link yang dimasukkan. Untuk dapat menampilkan halaman yang sesuai, dibutuhkan parameter yang lengkap. Pada kasus ini, 
+noTelepon tidak dimasukkan sehingga muncul error.
 
 4. Jika Papa APAP ingin melihat Travel Agensi dengan nama Papa APAP, link apa yang harus diakses?  
 Program pergipergi saat ini tidak menyediakan pencarian dengan nama. Oleh karena itu, Papa APAP dapat mengunjungi http://localhost:8080/agensi/viewAll 
@@ -82,6 +82,6 @@ untuk melihat idAgensi miliknya (yaitu 1), lalu mengunjungi http://localhost:808
 5. Tambahkan 1 contoh Travel Agensi lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/agensi/viewAll , 
 apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.  
 Tambahan agensi: http://localhost:8080/agensi/add?idAgensi=2&namaAgensi=Mama%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx  
-Halaman akan menampilkan list travel agensi yang telah dibuat. Berikut bukti *screenshot*-nya:
+Halaman akan menampilkan list travel agensi yang telah dibuat. Berikut bukti screenshot-nya:
 <img width="1280" alt="pert5" src="https://user-images.githubusercontent.com/90308363/133431764-93cdde63-f4f3-443f-a281-414db4b78a91.png">  
 <img width="1280" alt="pert5hasil" src="https://user-images.githubusercontent.com/90308363/133431787-61d4e555-671f-4197-ad89-cc11b623e5b1.png">
