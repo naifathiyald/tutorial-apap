@@ -31,6 +31,4 @@ public interface TravelAgensiService {
     // Method untuk menghapus agensi
     TravelAgensiModel deleteAgensi(TravelAgensiModel travelAgensi);
 
-    // Method untuk menghapus tour guide
-//    TourGuideModel deleteTourGuide(TourGuideModel tourGuide);
 }
