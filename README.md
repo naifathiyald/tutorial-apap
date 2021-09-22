@@ -2,6 +2,19 @@
 ## Authors
 * **Naifathiya Langitadiva** - *1906299055* - *B*
 
+## Tutorial 3
+### What I have learned today
+1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model
+(@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
+2. Pada class TravelAgensiDb, terdapat method findByNoAgensi, apakah kegunaan dari method
+tersebut?
+3. Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn
+4. Pada class TourGuideModel, digunakan anotasi @JoinColumn pada atribut agensi, apa
+kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa
+perbedaan nullable dan penggunaan anotasi @NotNull
+5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+
+
 ## Tutorial 2
 ### What I have learned today
 
