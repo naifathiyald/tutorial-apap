@@ -13,7 +13,7 @@
     - @Table berfungsi untuk menyediakan tabel yang memetakan entitas ini.
 2. Pada class TravelAgensiDb, terdapat method findByNoAgensi, apakah kegunaan dari method
 tersebut?  
-findByNoAgensi digunakan untuk mencari agensi berdasarkan no agensi. Method ini mengembalikan Optional yang merupakan sebuah 
+`findByNoAgensi` digunakan untuk mencari agensi berdasarkan no agensi. Method ini mengembalikan Optional yang merupakan sebuah 
 container berisi not-null object. Optional digunakan untuk mewakili null dengan nilai tidak ada. Keberadaan objek dapat diketahui 
 dengan method isPresent() dan dapat diambil dengan method get().
 3. Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn  
@@ -28,13 +28,16 @@ kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? d
 perbedaan nullable dan penggunaan anotasi @NotNull
 `name` adalah nama untuk kolom yang ada pada database. `referencedColumnName` adalah kolom yang direferensikan oleh atribut agensi 
 pada class TourGuideModel. Sedangkan, `nullable` merupakan penanda bahwa atribut ini tidak boleh berisi null/kosong.  
-Perbedaan antara nullable dan @NotNull
+`nullable` dan `@NotNull` pada dasarnya mencegah penyimpanan nilai null pada database. `nullable` merupakan bagian dari spesifikasi JPA 
+dalam menyatakan atribut yang bukan null untuk validasi dan menunjukkan rincian skema database. Validasi dilakukan bukan oleh Hibernate, 
+melainkan oleh database. Sedangkan, `@NotNull` didefinisikan dalam spesifikasi BeanValidation. Ini berarti penggunaannya tidak terbatas 
+hanya pada entity. @NotNull memberi tahu implementasi BeanValidation untuk memeriksa apakah atributnya bukan null.
 5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER  
-    - FetchType.LAZY mendefinisikan cara/strategi untuk mengambil data dari database dengan malas saat pertama kali diakses. LAZY 
+    - `FetchType.LAZY` mendefinisikan cara/strategi untuk mengambil data dari database dengan malas saat pertama kali diakses. LAZY 
     merupakan tipe fetch default. Hibernate tidak akan me-load relationship untuk suatu objek tertentu.
-    - FetchType.EAGER mendefinisikan cara/strategi untuk mengambil data dari database secara eager (penuh semangat). Secara default, 
+    - `FetchType.EAGER` mendefinisikan cara/strategi untuk mengambil data dari database secara eager (penuh semangat). Secara default, 
     tipe ini akan me-load semua relationship yang berkaitan dengan suatu objek yang sedang dimuat oleh Hibernate.
-    - CascadeType.ALL digunakan untuk menyebarkan (propagates) semua operasi, termasuk yang Hibernate-specific dari parent ke entitas child.
+    - `CascadeType.ALL` digunakan untuk menyebarkan (propagates) semua operasi, termasuk yang Hibernate-specific dari parent ke entitas child.
 
 
 ## Tutorial 2
