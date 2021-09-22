@@ -26,8 +26,8 @@ dengan method isPresent() dan dapat diambil dengan method get().
 4. Pada class TourGuideModel, digunakan anotasi @JoinColumn pada atribut agensi, apa
 kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa
 perbedaan nullable dan penggunaan anotasi @NotNull
-`name` adalah nama untuk kolom yang ada pada database. `referencedColumnName` adalah kolom yang direferensikan oleh atribut agensi 
-pada class TourGuideModel. Sedangkan, `nullable` merupakan penanda bahwa atribut ini tidak boleh berisi null/kosong.  
+`name` adalah nama untuk kolom yang ada pada database. `referencedColumnName` adalah nama kolom yang ditunjuk oleh atribut agensi class TourGuideModel. 
+Sedangkan, `nullable` merupakan penanda bahwa atribut ini tidak boleh berisi null/kosong.  
 `nullable` dan `@NotNull` pada dasarnya mencegah penyimpanan nilai null pada database. `nullable` merupakan bagian dari spesifikasi JPA 
 dalam menyatakan atribut yang bukan null untuk validasi dan menunjukkan rincian skema database. Validasi dilakukan bukan oleh Hibernate, 
 melainkan oleh database. Sedangkan, `@NotNull` didefinisikan dalam spesifikasi BeanValidation. Ini berarti penggunaannya tidak terbatas 
