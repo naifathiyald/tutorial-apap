@@ -17,7 +17,6 @@
     </head>
 </head>
 <body>
-<!--<div th:fragment="navbar(activeTab)">-->
 <nav th:fragment="navbar(activeTab)" class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand font-weight-bold text-primary" href="#">PergiPergi</a>
     <button
@@ -32,6 +31,7 @@
     </button>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
+            <!--https://nixmash.com/java/bootstrap-navbar-highlighting-in-thymeleaf/-->
             <li th:class="${activeTab == 'home'}? 'font-weight-bold' : null">
                 <a class="nav-item nav-link active text-secondary" th:href="@{/}">
                     Home<span class="sr-only">(current)</span>
@@ -59,6 +59,5 @@
         </form>
     </div>
 </nav>
-<!--</div>-->
 </body>
 </html>

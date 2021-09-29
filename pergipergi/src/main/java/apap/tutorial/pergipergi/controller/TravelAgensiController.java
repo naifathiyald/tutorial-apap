@@ -179,17 +179,6 @@ public  class TravelAgensiController {
         return "add-agensi";
     }
 
-//    @PostMapping(value = "/agensi/add", params = {"save"})
-//    public String addAgensiSavePage(
-//            @ModelAttribute TravelAgensiModel agensi,
-//            Model model
-//    ){
-//        travelAgensiService.addAgensi(agensi);
-//        model.addAttribute("noAgensi", agensi.getNoAgensi());
-//        return "add-agensi";
-//    }
-
-//    @RequestMapping(value = "/agensi/add/{noAgensi}", method = RequestMethod.POST, params = {"addRow"})
     @PostMapping(value = "/agensi/add", params = {"addRow"})
     public String addRowAgensiPage(
             @ModelAttribute TravelAgensiModel agensi,
@@ -213,7 +202,6 @@ public  class TravelAgensiController {
         return "form-add-agensi";
     }
 
-//    @PostMapping(value = "/agensi/add", params = {"deleteRow"})
     @RequestMapping(value = "/agensi/add", method = RequestMethod.POST, params = {"deleteRow"})
     public String deleteRowAgensiPage(
             @ModelAttribute TravelAgensiModel agensi,
