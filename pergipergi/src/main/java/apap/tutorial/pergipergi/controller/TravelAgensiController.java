@@ -1,15 +1,19 @@
 package apap.tutorial.pergipergi.controller;
 
+import apap.tutorial.pergipergi.model.DestinasiModel;
 import apap.tutorial.pergipergi.service.TravelAgensiService;
+import apap.tutorial.pergipergi.service.DestinasiService;
 import apap.tutorial.pergipergi.model.TravelAgensiModel;
 import apap.tutorial.pergipergi.model.TourGuideModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -152,13 +156,20 @@ public  class TravelAgensiController {
     @Autowired
     private TravelAgensiService travelAgensiService;
 
+    @Qualifier("destinasiServiceImpl")
+    @Autowired
+    private DestinasiService destinasiService; //
+
     @GetMapping("/agensi/add")
     public String addAgensiFormPage(Model model){
         model.addAttribute("agensi", new TravelAgensiModel());
+        List<DestinasiModel> opsiDestinasi = destinasiService.getListDestinasi();
+
+        model.addAttribute("opsiDestinasi", opsiDestinasi);
         return "form-add-agensi";
     }
 
-    @PostMapping("/agensi/add")
+    @PostMapping(value = "/agensi/add", params = {"save"})
     public String addAgensiSubmitPage(
             @ModelAttribute TravelAgensiModel agensi,
             Model model
@@ -166,6 +177,58 @@ public  class TravelAgensiController {
         travelAgensiService.addAgensi(agensi);
         model.addAttribute("noAgensi", agensi.getNoAgensi());
         return "add-agensi";
+    }
+
+//    @PostMapping(value = "/agensi/add", params = {"save"})
+//    public String addAgensiSavePage(
+//            @ModelAttribute TravelAgensiModel agensi,
+//            Model model
+//    ){
+//        travelAgensiService.addAgensi(agensi);
+//        model.addAttribute("noAgensi", agensi.getNoAgensi());
+//        return "add-agensi";
+//    }
+
+//    @RequestMapping(value = "/agensi/add/{noAgensi}", method = RequestMethod.POST, params = {"addRow"})
+    @PostMapping(value = "/agensi/add", params = {"addRow"})
+    public String addRowAgensiPage(
+            @ModelAttribute TravelAgensiModel agensi,
+            BindingResult bindingResult,
+            Model model
+    ){
+        List<DestinasiModel> opsiDestinasi = destinasiService.getListDestinasi();
+
+        if (agensi.getListDestinasi() == null) {
+            agensi.setListDestinasi(new ArrayList<DestinasiModel>());
+        }
+
+        // Agensi telah memiliki destinasi (untuk row kedua dst)
+        List<DestinasiModel> listDestinasi = agensi.getListDestinasi();
+        DestinasiModel destinasiBaru = new DestinasiModel();
+        listDestinasi.add(destinasiBaru);
+
+        model.addAttribute("opsiDestinasi", opsiDestinasi);
+        model.addAttribute("agensi", agensi);
+
+        return "form-add-agensi";
+    }
+
+//    @PostMapping(value = "/agensi/add", params = {"deleteRow"})
+    @RequestMapping(value = "/agensi/add", method = RequestMethod.POST, params = {"deleteRow"})
+    public String deleteRowAgensiPage(
+            @ModelAttribute TravelAgensiModel agensi,
+            final BindingResult bindingResult,
+            final HttpServletRequest req,
+            Model model
+    ){
+        List<DestinasiModel> opsiDestinasi = destinasiService.getListDestinasi();
+        final Integer noRow = Integer.valueOf(req.getParameter("deleteRow"));
+        agensi.getListDestinasi().remove(noRow.intValue());
+
+        model.addAttribute("agensi", agensi);
+        model.addAttribute("opsiDestinasi", opsiDestinasi);
+
+        return "form-add-agensi";
     }
 
     @GetMapping("/agensi/viewall")
@@ -182,16 +245,19 @@ public  class TravelAgensiController {
     ){
         TravelAgensiModel agensi = travelAgensiService.getAgensiByNoAgensi(noAgensi);
         List<TourGuideModel> listTourGuide = agensi.getListTourGuide();
+        List<DestinasiModel> listDestinasi = agensi.getListDestinasi();
 
         model.addAttribute("agensi", agensi);
         model.addAttribute("listTourGuide", listTourGuide);
+        model.addAttribute("listDestinasi", listDestinasi);
 
         return "view-agensi";
     }
 
     @GetMapping("/agensi/update/{noAgensi}")
     public String updateAgensiFormPage(
-            @ModelAttribute Long noAgensi,
+            // @ModelAttribute Long noAgensi,
+            @PathVariable(value = "noAgensi", required = true) Long noAgensi,
             Model model
     ){
         TravelAgensiModel agensi = travelAgensiService.getAgensiByNoAgensi(noAgensi);
@@ -221,7 +287,6 @@ public  class TravelAgensiController {
             model.addAttribute("agensi", agensi);
             return "delete-agensi";
         }
-
         return "null-agensi";
     }
 

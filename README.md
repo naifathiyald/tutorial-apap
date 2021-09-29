@@ -2,6 +2,24 @@
 ## Authors
 * **Naifathiya Langitadiva** - *1906299055* - *B*
 
+## Tutorial 4
+### What I have learned today
+1. Jelaskan perbedaan th:include dan th:replace!  
+Dengan `th:include`, isi fragment akan diletakkan di dalam tag yang bersangkutan tapi tidak termasuk tag fragment-nya.  
+Sedangkan, `th:replace` akan menggantikan tag dengan konten yang didefinisikan pada fragment. Ini akan menghapus tag asal, 
+lalu akan menambahkan fragment yang ditentukan termasuk dengan tag-nya. th:replace tidak mengharuskan kita untuk mencocokkan 
+tag HTML di fragment.  
+2. Jelaskan apa fungsi dari `th:object`!  
+`th:object` digunakan untuk menentukan objek yang akan terikat oleh data dari form yang dibuat/kirimkan. Di dalam <form> tag, 
+hanya boleh terdapat 1 th:object yang didefinisikan karena form HTML tidak bisa nested. Ekspresi yang digunakan untuk mendefinisikan 
+objek harus merujuk ke objek bean secara langsung. 
+3. Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?  
+`*` atau asterisk syntax mengevaluasi ekspresi pada objek yang dipilih daripada keseluruhan konteks. Syntax ini dipakai ketika 
+kita hanya ingin memanggil atribut dari objek. Misalkan untuk objek TravelAgensiModel agensi, syntax untuk mengakses atributnya 
+adalah `*{noAgensi}`. Syntax ini sering digunakan untuk atribut th:field pada pembuatan form.
+Sedangkan, `$` atau dollar syntax merupakan bentuk ekspresi standar. Syntax untuk mengakses atributnya harus dengan objek utamanya. 
+Misalkan untuk objek TravelAgensiModel agensi, cara mengaksesnya adalah `${agensi.noAgensi}`.
+
 ## Tutorial 3
 ### What I have learned today
 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model

@@ -108,13 +108,14 @@ public class TravelAgensiServiceImpl implements TravelAgensiService {
         return null;
     }
 
-//    @Override
-//    public TourGuideModel deleteTourGuide(TourGuideModel tourGuide) {
-//        if (!(LocalTime.now().isAfter(tourGuide.getAgensi().getWaktuBuka()) && LocalTime.now().isBefore(tourGuide.getAgensi().getWaktuTutup()))) {
-//            tourGuideDb.delete(tourGuide);
-//            return tourGuide;
-//        }
-//        return null;
-//    }
+
+    @Override
+    public boolean isClosed(LocalTime waktuBuka, LocalTime waktuTutup) {
+        LocalTime now = LocalTime.now();
+        if (now.isBefore(waktuBuka) || now.isAfter(waktuTutup)) {
+            return true;
+        }
+        return false;
+    }
 
 }

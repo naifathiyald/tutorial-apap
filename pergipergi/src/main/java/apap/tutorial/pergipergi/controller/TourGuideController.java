@@ -72,22 +72,44 @@ public class TourGuideController {
         return "null-agensi";
     }
 
-    @GetMapping("tour-guide/delete/{noTourGuide}")
-    public String deleteTourGuidePage(
-            @PathVariable(value = "noTourGuide", required = true) Long noTourGuide,
+//    @GetMapping("tour-guide/delete/{noTourGuide}") // deleteTourGuide buatan ku
+//    public String deleteTourGuidePage(
+//            @PathVariable(value = "noTourGuide", required = true) Long noTourGuide,
+//            Model model
+//    ){
+//        TourGuideModel tourGuide = tourGuideService.getGuideByNoTourGuide(noTourGuide);
+//        TravelAgensiModel agensi = tourGuide.getAgensi();
+//
+//        TourGuideModel deletedGuide = tourGuideService.deleteTourGuide(tourGuide);
+//
+//        if (deletedGuide != null) {
+//            model.addAttribute("tourGuide", tourGuide);
+//            model.addAttribute("agensi", agensi);
+//            return "delete-tour-guide";
+//        }
+//
+//        return "null-agensi";
+//    }
+
+    @PostMapping("/tour-guide/delete")
+    public String deleteTourGuideSubmit(
+            @ModelAttribute TravelAgensiModel agensi,
             Model model
     ){
-        TourGuideModel tourGuide = tourGuideService.getGuideByNoTourGuide(noTourGuide);
-        TravelAgensiModel agensi = tourGuide.getAgensi();
-
-        TourGuideModel deletedGuide = tourGuideService.deleteTourGuide(tourGuide);
-
-        if (deletedGuide != null) {
-            model.addAttribute("tourGuide", tourGuide);
-            model.addAttribute("agensi", agensi);
+        if (travelAgensiService.isClosed(agensi.getWaktuBuka(), agensi.getWaktuTutup())) {
+            for (TourGuideModel tourGuide : agensi.getListTourGuide()) {
+                tourGuideService.deleteTourGuide(tourGuide);
+            }
+            model.addAttribute("noAgensi", agensi.getNoAgensi());
             return "delete-tour-guide";
         }
-
         return "null-agensi";
+
+//        model.addAttribute("noAgensi", agensi.getNoAgensi());
+//        for (TourGuideModel tourGuide : agensi.getListTourGuide()) {
+//            TourGuideModel deletedTourGuide = tourGuideService.deleteTourGuide(tourGuide);
+//            if (deletedTourGuide == null) return "null-agensi";
+//        }
+//        return "delete-tour-guide"; // buatan ku
     }
 }
