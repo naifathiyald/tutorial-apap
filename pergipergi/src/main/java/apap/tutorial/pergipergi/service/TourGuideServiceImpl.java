@@ -41,10 +41,14 @@ public class TourGuideServiceImpl implements TourGuideService {
 
     @Override
     public TourGuideModel deleteTourGuide(TourGuideModel tourGuide) {
-        if (!(LocalTime.now().isAfter(tourGuide.getAgensi().getWaktuBuka()) && LocalTime.now().isBefore(tourGuide.getAgensi().getWaktuTutup()))) {
-            tourGuideDb.delete(tourGuide);
-            return tourGuide;
-        }
-        return null;
+//        if (!(LocalTime.now().isAfter(tourGuide.getAgensi().getWaktuBuka()) && LocalTime.now().isBefore(tourGuide.getAgensi().getWaktuTutup()))) {
+//            tourGuideDb.delete(tourGuide);
+//            return tourGuide;
+//        }
+//        return null;
+        tourGuideDb.delete(tourGuide);
+        return tourGuide;
     }
+
+
 }

@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Add Tour Guide</title>
+    <title>Add Destinasi</title>
     <object th:include="fragments//fragment :: css" th:remove="tag"></object>
     <object th:include="fragments//fragment :: js" th:remove="tag"></object>
 </head>
+
 <body>
-<nav th:replace="fragments/fragment :: navbar('agensi')"></nav>
+<nav th:replace="fragments/fragment :: navbar('destinasi')"></nav>
 <div class="container">
     <div class="card m-4 p-4">
         <div class="card-body">
             <div class="justify-content-center">
-                <h2>Tambah Tour Guide</h2>
+                <h2>Tambah Destinasi</h2>
                 <br>
-                <form th:action="@{/tour-guide/add}" th:object="${guide}" method="POST">
-                    <input type="hidden" th:field="*{agensi}" />
+                <form th:action="@{/destinasi/add}" th:object="${destinasi}" method="POST">
 
-                    Nama Tour Guide : <br>
-                    <input class="form-control" type="text" name="namaTourGuide"/>
-                    <br>
+                    Negara Destinasi : <br>
+                    <input required class="form-control" type="text" name="negaraDestinasi" />
+                    <br><br>
 
-                    Jenis Kelamin : <br>
-                    <select name="jenisKelamin">
-                        <option value="0">Perempuan</option>
-                        <option value="1">Laki-laki</option>
+                    Bebas Visa : <br>
+                    <select name="isBebasVisa" th:field="*{isBebasVisa}"
+                            class="form-control">
+                        <option th:value="0" th:text="YA"></option>
+                        <option th:value="1" th:text="TIDAK"></option>
                     </select>
                     <br><br>
 
@@ -37,4 +39,5 @@
 </div>
 
 </body>
+
 </html>
