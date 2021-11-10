@@ -1,5 +1,6 @@
 package apap.tutorial.pergipergi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
+//@JsonIgnoreProperties(value={"listTravelAgensi"},allowSetters = true)
 @Table(name = "destinasi")
 public class DestinasiModel {
 

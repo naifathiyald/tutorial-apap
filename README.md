@@ -2,6 +2,14 @@
 ## Authors
 * **Naifathiya Langitadiva** - *1906299055* - *B*
 
+
+## Tutorial 5
+### What I have learned today
+1. Apa itu Postman? Apa kegunaannya?
+2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.
+3. Apa kegunaan atribut WebClient?
+4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
+
 ## Tutorial 4
 ### What I have learned today
 1. Jelaskan perbedaan th:include dan th:replace!  
