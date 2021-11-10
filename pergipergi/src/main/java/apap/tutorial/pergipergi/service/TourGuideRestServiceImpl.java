@@ -11,6 +11,7 @@ import reactor.core.publisher.Mono;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -46,9 +47,17 @@ public class TourGuideRestServiceImpl implements TourGuideRestService {
     @Override
     public TourGuideModel getUmur(Long noTourGuide) {
         TourGuideModel tourGuide = getTourGuideByNoTourGuide(noTourGuide);
-        Mono<TourGuideDetail> detailMono = this.webClient.get().uri("?name=" + tourGuide.getNamaTourGuide()).retrieve().bodyToMono(TourGuideDetail.class);
+//        Mono<TourGuideDetail> detailMono = this.webClient.get().uri("?name=" + tourGuide.getNamaTourGuide()).retrieve().bodyToMono(TourGuideDetail.class);
+//
+//        tourGuide.setUmur(detailMono.block().getAge());
+//        tourGuideDb.save(tourGuide);
+//        return tourGuide;
 
-        tourGuide.setUmur(detailMono.block().getAge());
+        // Tanpa TourGuideDetail
+        Mono<Map> result = this.webClient.get().uri("?name=" + tourGuide.getNamaTourGuide()).retrieve().bodyToMono(Map.class);
+
+        Map map = result.block();
+        tourGuide.setUmur((Integer) map.get("age"));
         tourGuideDb.save(tourGuide);
         return tourGuide;
     }
