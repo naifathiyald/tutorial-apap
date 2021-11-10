@@ -17,9 +17,9 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
-//@JsonIgnoreProperties(value={"listTravelAgensi"},allowSetters = true)
+@JsonIgnoreProperties(value={"listTravelAgensi"},allowSetters = true)
 @Table(name = "destinasi")
-public class DestinasiModel {
+public class DestinasiModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

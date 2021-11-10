@@ -93,8 +93,4 @@ public class TravelAgensiRestServiceImpl implements TravelAgensiRestService {
                 .bodyToMono(AgensiDetail.class);
     }
 
-//
-//    public TravelAgensiRestServiceImpl(WebClient.Builder webClientBuilder){
-//        this.webClient = webClientBuilder.baseUrl(Setting.agensiUrl).build();
-//    }
 }
