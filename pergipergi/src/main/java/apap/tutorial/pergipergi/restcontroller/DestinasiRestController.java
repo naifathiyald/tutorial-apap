@@ -92,15 +92,4 @@ public class DestinasiRestController {
         return destinasiRestService.retrieveListDestinasi();
     }
 
-//    @GetMapping(value = "/destinasi/{noDestinasi}/status")
-//    private Mono<String> getStatus(
-//            @PathVariable("noDestinasi") Long noDestinasi
-//    ) {
-//        return travelAgensiRestService.getStatus(noDestinasi);
-//    }
-//
-//    @PostMapping(value = "/full")
-//    private Mono<AgensiDetail> postStatus() {
-//        return travelAgensiRestService.postStatus();
-//    }
 }
