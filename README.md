@@ -11,11 +11,11 @@ menguji API yang telah mereka buat, seperti yang kita lakukan pada tutorial 5 in
 yang dapat dibuat menjadi sebuah dokumentasi utuh untuk satu projek tertentu. Beberapa uji coba yang dapat dilakukan melalui 
 Postman, antara lain GET seluruh data maupun data tertentu, POST untuk menambah data, PUT untuk meng-update data dengan id tertentu, 
 dan DELETE untuk menghapus data dengan id tertentu.
-2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.
-    - @JsonIgnoreProperties digunakan pada class level untuk menandai properti atau daftar properti yang akan diabaikan. 
+2. Jelaskan fungsi dari anotasi `@JsonIgnoreProperties` dan `@JsonProperty`.
+    - `@JsonIgnoreProperties` digunakan pada class level untuk menandai properti atau daftar properti yang akan diabaikan. 
     @JsonIgnoreProperties digunakan untuk menekan serialisasi properti (selama serialisasi), atau mengabaikan pemrosesan pembacaan 
     properti JSON (selama deserialisasi).
-    - @JsonProperty digunakan untuk memetakan nama properti dengan key JSON selama serialisasi dan deserialisasi. @JsonProperty 
+    - `@JsonProperty` digunakan untuk memetakan nama properti dengan key JSON selama serialisasi dan deserialisasi. @JsonProperty 
     dapat meng-override behavior serialisasi dengan menggunakan atribut String yang menentukan nama yang harus dipetakan ke field selama serialisasi. 
     Selain itu, dapat digunakan pula selama deserialisasi saat nama properti JSON dan nama bidang objek Java tidak cocok.
 3. Apa kegunaan atribut WebClient?  
@@ -23,12 +23,12 @@ WebClient adalah komponen yang digunakan untuk membuat panggilan HTTP ke layanan
 yang berfunngsi untuk membantu membangun aplikasi reaktif dan non-blocking. WebClient mendukung requests web non-blocking menggunakan 
 fitur dari library Webflux. Selain itu, WebClient juga dapat digunakan dalam mode blocking, di mana kode akan menunggu request berakhir sebelum 
 melanjutkan lebih jauh.
-4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
-    - ResponseEntity merupakan extension dari HttpEntity yang merepresentasikan seluruh HTTP responses, mulai dari status code, header, dan body. Karena itu, kita dapat 
+4. Apa itu `ResponseEntity` dan `BindingResult`? Apa kegunaannya?
+    - `ResponseEntity` merupakan extension dari HttpEntity yang merepresentasikan seluruh HTTP responses, mulai dari status code, header, dan body. Karena itu, kita dapat 
       menggunakannya untuk mengkonfigurasi HTTP response sepenuhnya. ResponseEntity juga memungkinkan kita untuk memodifikasi response 
       dengan header dan status code opsional. ResponseEntity digunakan saat kita perlu mengubah header atau status code berdasarkan business logic 
       maupun request yang masuk.
-    - BindingResult menyimpan hasil validasi dan binding, serta berisi error yang mungkin terjadi. Kita dapat menggunakan objek 
+    - `BindingResult` menyimpan hasil validasi dan binding, serta berisi error yang mungkin terjadi. Kita dapat menggunakan objek 
     BindingResult sebagai argumen untuk metode validasi Validator di dalam Controller. BindingResult menentukan bagaimana objek 
     harus menyimpan dan mengambil hasil validasi.
 
