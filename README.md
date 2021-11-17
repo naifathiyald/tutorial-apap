@@ -5,26 +5,55 @@
 
 ## Tutorial 6
 ### What I have learned today
-1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
-- Otentikasi merupakan proses pemeriksaan detail user untuk mengidentifikasi dan memberi hak/akses masuk ke dalam sistem. Otentikasi 
-pada tutorial kali ini adalah adanya proses memasukkan username dan password. Contoh kode implementasi terkait otorisasi ada pada file `WebSecurityConfig`, antara lain:  
-
-- Otorisasi merupakan proses pemeriksaan hak apa saja yang user terima untuk dapat mengakses suatu fitur/aksi di dalam sistem.  
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?  
+Otentikasi merupakan proses pemeriksaan detail user untuk mengidentifikasi dan memberi hak/akses masuk ke dalam sistem. Otentikasi 
+pada tutorial kali ini adalah adanya proses memasukkan username dan password. Contoh kode implementasi terkait otentikasi ada pada file `WebSecurityConfig`, yaitu:
+    ```
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+    }
+    ```
+   Sedangkan, Otorisasi merupakan proses pemeriksaan hak apa saja yang user terima untuk dapat mengakses suatu fitur/aksi di dalam sistem. 
 Contoh kode implementasi terkait otorisasi ada pada file `WebSecurityConfig`, antara lain:  
-.antMatchers("/user/add").hasAuthority("Admin")  
-.antMatchers("/user/viewall").hasAuthority("Admin")  
-.antMatchers("/user/delete/**").hasAuthority("Admin")  
-.antMatchers("/destinasi/add").hasAuthority("Agen")  
-Kode-kode tersebut memberi hak khusus kepada suatu role agar dapat mengakses halaman terkait.
+    ```
+    .authorizeRequests()
+    .antMatchers("/css/**").permitAll()
+    .antMatchers("/js/**").permitAll()
+    .antMatchers("/user/add").hasAuthority("Admin")  
+    .antMatchers("/user/viewall").hasAuthority("Admin")  
+    .antMatchers("/user/delete/**").hasAuthority("Admin")  
+    .antMatchers("/destinasi/add").hasAuthority("Agen")  
+    ```
+    Kode-kode tersebut memberi hak khusus kepada suatu role agar dapat mengakses halaman terkait.
 
-2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.  
+BCryptPasswordEncoder adalah salah satu encoder password yang digunakan dalam modul spring boot security untuk encoding dan decoding 
+password, serta validasi. Pada BCryptPasswordEncoder, digunakan algoritma BCrypt yang merupakan sebuah algoritma enkripsi 
+satu arah. Digunakan pula berbagai parameter yang dapat dikonfigurasi untuk menentukan kompleksitas dari algoritma dan didefinisikan 
+pada constructor class BCryptPasswordEncoder. Dalam aplikasinya, password yang dimasukkan oleh user akan dienkripsi lalu disimpan 
+ke dalam database sebagai 'encrypted password'. Karena BCryptPasswordEncoder bersifat satu arah, maka tidak mendekripsi password yang 
+telah dienkripsi. Oleh sebab itu, disediakan method `matches()` yang dapat memeriksa password mentah dengan password yang telah dienkripsi.  
+3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa demikian?  
+Berdasarkan situs-situs yang saya baca, keduanya memiliki kelebihan dan kekurangannya masing-masing. Mana yang lebih baik tergantung 
+pada tujuan tim pengembang karena fungsi encryption dan hashing berbeda pula. Namun jika dilihat dari segi keamanan, maka hashing 
+akan menjadi pilihan yang lebih baik karena bersifat satu arah dan mengacak teks mentah untuk menghasilkan pesan yang unik. Sedangkan, 
+encryption bersifat dua arah sehingga yang terenkripsi dapat didekripsikan kembali dengan key yang tepat.
+4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!  
+UUID merupakan singkatan dari Universally Unique Identifier yang terlihat seperti urutan 32 karakter huruf dan angka yang dipisahkan oleh tanda hubung. 
+Nyatanya, UUID merupakan 128-bit number yang mengidentifikasi objek/data internet secara unik. 
+UUID berguna untuk memberi entitas nama khususnya sendiri, misal dalam sebuah database. Dengan digunakannya UUID, keamanan data user 
+akan meningkat karena dilakukan hashing hingga id user jadi tidak mudah untuk diserang/retas.
+5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut?  
+Class UserDetailsServiceImpl.java merupakan implementasi dari interface (UserDetailsService) yang ada pada framework spring security dan digunakan untuk membangun 
+otentikasi user. Pada class ini, dihasilkan objek UserDetails dari method `loadUserByUsername` yang akan memberikan informasi terkait user, serta memberi otorisasi 
+untuk user sesuai role-nya.  
 
-3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa demikian?
 
-4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
-
-5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut?
-
+Referensi:
+https://www.yawintutor.com/encode-decode-using-bcryptpasswordencoder-in-spring-boot-security/  
+https://gcn.com/articles/2013/12/02/hashing-vs-encryption.aspx  
+https://www.clickssl.net/blog/difference-between-hashing-vs-encryption  
 
 ## Tutorial 5
 ### What I have learned today
