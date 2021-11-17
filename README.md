@@ -50,7 +50,7 @@ otentikasi user. Pada class ini, dihasilkan objek UserDetails dari method `loadU
 untuk user sesuai role-nya.  
 
 
-Referensi:
+Referensi:  
 https://www.yawintutor.com/encode-decode-using-bcryptpasswordencoder-in-spring-boot-security/  
 https://gcn.com/articles/2013/12/02/hashing-vs-encryption.aspx  
 https://www.clickssl.net/blog/difference-between-hashing-vs-encryption  
