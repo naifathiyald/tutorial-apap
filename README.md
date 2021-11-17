@@ -3,6 +3,29 @@
 * **Naifathiya Langitadiva** - *1906299055* - *B*
 
 
+## Tutorial 6
+### What I have learned today
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
+- Otentikasi merupakan proses pemeriksaan detail user untuk mengidentifikasi dan memberi hak/akses masuk ke dalam sistem. Otentikasi 
+pada tutorial kali ini adalah adanya proses memasukkan username dan password. Contoh kode implementasi terkait otorisasi ada pada file `WebSecurityConfig`, antara lain:  
+
+- Otorisasi merupakan proses pemeriksaan hak apa saja yang user terima untuk dapat mengakses suatu fitur/aksi di dalam sistem.  
+Contoh kode implementasi terkait otorisasi ada pada file `WebSecurityConfig`, antara lain:  
+.antMatchers("/user/add").hasAuthority("Admin")  
+.antMatchers("/user/viewall").hasAuthority("Admin")  
+.antMatchers("/user/delete/**").hasAuthority("Admin")  
+.antMatchers("/destinasi/add").hasAuthority("Agen")  
+Kode-kode tersebut memberi hak khusus kepada suatu role agar dapat mengakses halaman terkait.
+
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+
+3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa demikian?
+
+4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+
+5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut?
+
+
 ## Tutorial 5
 ### What I have learned today
 1. Apa itu Postman? Apa kegunaannya?  

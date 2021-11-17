@@ -13,19 +13,12 @@
 <div class="container">
     <h2>Daftar Seluruh Destinasi</h2>
     <br>
-<!--    <div th:each="destinasi : ${listDestinasi}" class="card m-4 p-4">-->
-<!--        <div class="card-body">-->
-<!--            <div class="justify-content-center">-->
-<!--                <p th:text="'Nomor Destinasi : ' + ${destinasi.noDestinasi}"></p>-->
-<!--                <p th:text="'Negara Destinasi : ' + ${destinasi.negaraDestinasi}"></p>-->
-<!--                <p th:if="${destinasi.isBebasVisa == 0}" th:text="'Bebas Visa : TIDAK'"></p>-->
-<!--                <p th:if="${destinasi.isBebasVisa == 1}" th:text="'Bebas Visa : YA'"></p>-->
-<!--                <br>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <br>-->
-<!--    </div>-->
 
+    <a class="btn btn-primary"
+       th:if="${role} == '[Agen]'"
+       th:href="@{/destinasi/add}">Tambah</a>
+    <br>
+    <br>
     <div th:if="*{listDestinasi.size() !=0}">
         <table class="table">
             <thead>
