@@ -21,17 +21,17 @@ export default class Home extends React.Component {
     	const newItems = [...this.state.cartItems];
     	const newItem = { ...item };
     	const targetInd = newItems.findIndex((it) => it.id === newItem.id);
-    	if (targetInd < 0){
+    	if (targetInd < 0){ // newItem belum ada di dalam cartItems
     	    if (this.state.balance >= newItem.price) {
                 newItem.inCart = true;
                 newItems.push(newItem);
                 this.updateShopItem(newItem, true)
-                this.setState({ cartItems: newItems });
                 this.setState({ balance: this.state.balance - newItem.price });
     	    } else {
     	        alert("Balance not sufficient!");
     	    }
     	}
+    	this.setState({ cartItems: newItems });
     };
 
     handleDeleteItemInCart = (item) => {
@@ -41,7 +41,8 @@ export default class Home extends React.Component {
 
         	currentItems.splice(targetInd, 1);
         	deletedItem.inCart = false;
-        	
+
+            this.updateShopItem(deletedItem, false)
             this.setState({ cartItems: currentItems });
             this.setState({ balance: this.state.balance + deletedItem.price });
      };

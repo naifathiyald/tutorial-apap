@@ -2,6 +2,45 @@
 ## Authors
 * **Naifathiya Langitadiva** - *1906299055* - *B*
 
+## Tutorial 6
+### What I have learned today
+1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.  
+    **Soal 1**  
+    
+    **Soal 2**  
+    
+    **Soal 3**  
+
+2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?  
+Berdasarkan pemahaman saya, state merupakan sebuah objek yang menyimpan informasi terkait component dan dapat berubah seiring waktu berjalan. 
+Seperti pada tutorial kali ini, kita merubah state ketika aksi-aksi tertentu dilakukan. State juga hanya dapat diakses/diubah di dalam 
+component secara langsung.  Sedangkan, props merupakan objek/komponen yang tidak dapat berubah dan hanya dapat dilihat. Props 
+menyimpan nilai dari atribut-atribut komponen. Berbeda dengan state, props dapat melakukan passing data dari suatu komponen ke 
+komponen lain, seperti pada tutorial ketika props dari Item di-pass ke Home.
+3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya.  
+
+4. Apa perbedaan class component dan functional component?  
+   - Functional Component merupakan fungsi JavaScript biasa yang menerima props sebagai argymen dan mengembalikan elemen React. 
+   Sedangkan, Class Component mengharuskan kita untuk extend dari component React dan membuat fungsi render yang mengembalikan 
+   elemen React.
+   - Functional Component tidak menggunakan constructor. Class Component menggunakan constructor untuk menyimpan state.
+   - Functional Component dikenal sebagai stateless component karena hanya menerima dan menampilkan data dalam beberapa bentuk yang 
+   utamanya bertanggung jawab untuk merender UI. Class Component dikenal sebagai stateful component karena diimplementasikan logic dan state.
+5. Dalam react, apakah perbedaan component dan element?  
+   React Component:
+   - Sebuah template, dapat berupa function maupun class dengan method render.
+   - Mengambil props sebagai input dan mengembalikan JSX tree sebagai output
+   - Ketika React melihat element dengan tipe function/class, ia akan berkonsultasi dengan component tersebut untuk mengetahui element mana yang harus dikembalikan, dengan menggunakan props yang sesuai.
+   React Element:
+   - Sebuah hasil pengembalian dari component, yaitu objek yang menjelaskan nodes DOM yang direpresentasikan suatu component.
+   - Dengan functional component, element ini adalah objek yang dikembalikan oleh function tsb.
+   - Dengan class component, element-nya adalah objek yang dikembalikan oleh fungsi render milik component.
+   - Bukan merupakan sesuatu yang dapat dilihat di browser, melainkan objek di memori.
+
+Referensi:  
+https://www.geeksforgeeks.org/differences-between-functional-components-and-class-components-in-react/  
+https://stackoverflow.com/questions/30971395/difference-between-react-component-and-react-element  
+
 
 ## Tutorial 6
 ### What I have learned today
