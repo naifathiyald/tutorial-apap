@@ -79,7 +79,7 @@ export default class Home extends React.Component {
                 <p className="text-center text-primary">Your Balance: <b> {this.state.balance}</b> </p>
                 <div className="container pt-3">
                     <div className="row mt-3">
-                        {!this.state.cartHidden ? ( // Di halaman cart
+                        {!this.state.cartHidden ? (
                             <div className="col-sm">
                                 <List
                                     title="My Cart"
@@ -87,7 +87,7 @@ export default class Home extends React.Component {
                                     onItemClick={this.handleDeleteItemInCart}
                                 ></List>
                             </div>
-                        ) : <div className="col-sm"> // Di halaman list
+                        ) : <div className="col-sm">
                                 <List
                                     title="List Items"
                                     items={this.state.shopItems}
