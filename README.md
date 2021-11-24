@@ -47,8 +47,9 @@ mudah dibuat dengan bantuan component-component yang ada.
    React Component:
    - Sebuah template, dapat berupa function maupun class dengan method render.
    - Mengambil props sebagai input dan mengembalikan JSX tree sebagai output
-   - Ketika React melihat element dengan tipe function/class, ia akan berkonsultasi dengan component tersebut untuk mengetahui element mana yang harus dikembalikan, dengan menggunakan props yang sesuai.
-   React Element:
+   - Ketika React melihat element dengan tipe function/class, ia akan berkonsultasi dengan component tersebut untuk mengetahui element mana yang harus dikembalikan, dengan menggunakan props yang sesuai.  
+
+    React Element:
    - Sebuah hasil pengembalian dari component, yaitu objek yang menjelaskan nodes DOM yang direpresentasikan suatu component.
    - Dengan functional component, element ini adalah objek yang dikembalikan oleh function tsb.
    - Dengan class component, element-nya adalah objek yang dikembalikan oleh fungsi render milik component.
