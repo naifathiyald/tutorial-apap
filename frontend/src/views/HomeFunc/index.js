@@ -42,12 +42,32 @@ function App() {
         const targetInd = newItems.findIndex((it) => it.id === newItem.id);
 
         if (targetInd < 0) {
-            newItem.inCart = true;
-            newItems.push(newItem);
-            updateShopItem(newItem, true)
+            if (balance >= newItem.price) {
+                newItem.inCart = true;
+                newItems.push(newItem);
+                updateShopItem(newItem, true)
+                setBalance(balance - newItem.price);
+            } else {
+                alert("Balance not sufficient!");
+            }
         }
         setCartItems(newItems);
     }
+
+    function handleDeleteItemCart(item){
+            const currentItems = [...cartItems];
+            const deletedItem = { ...item };
+            const targetInd = currentItems.findIndex((it) => it.id === deletedItem.id);
+
+            if (targetInd >= 0) {
+                currentItems.splice(targetInd, 1);
+                deletedItem.inCart = false;
+                updateShopItem(deletedItem, false)
+                setBalance(balance + deletedItem.price);
+            }
+            setCartItems(currentItems);
+    }
+
     return (
         <div className="container-fluid">
             <h1 className="text-center mt-3 mb-0">Mini Commerce</h1>
@@ -71,7 +91,7 @@ function App() {
                             <List
                             title="My Cart"
                             items={cartItems}
-                            onItemClick={() => {}}
+                            onItemClick={handleDeleteItemCart}
                             ></List>
                         </div>
                     ) : <div className="col-sm">
