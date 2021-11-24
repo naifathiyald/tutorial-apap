@@ -10,6 +10,7 @@
     Dibuat fungsi baru, yaitu `handleDeleteItemInCart`. Pada fungsi tsb, dicari tahu index dari item yang ingin dihapus dan 
     dipanggil method .splice() untuk menghapus item dari array cartItems. Lalu, state dari component diubah karena ada item yang dihapus. 
     Props dari Item, yaitu inCart, juga diubah untuk menandakan item sudah tidak berada pada cart.  
+    
     **Soal 2**  
     <img width="900" alt="no2b" src="https://user-images.githubusercontent.com/90308363/143241778-52573d8c-7fc2-4dc1-a090-d2df71e84e85.png">
     <img width="900" alt="no2" src="https://user-images.githubusercontent.com/90308363/143241681-0913d6e0-da40-4e76-a876-a9e04156bcae.png">
@@ -17,6 +18,7 @@
     Pada fungsi `handleDeleteItemInCart`, disisipkan line untuk mengubah state balance ketika item dari cart dihapus. Balance akan ditambahkan dengan 
     props price dari item terkait. Pada fungsi `handleAddItemToCart`, juga disisipkan line untuk mengubah stat balance. Balance akan 
     dikurangi dengan props price dari item terkait.  
+    
     **Soal 3**  
     <img width="900" alt="no3" src="https://user-images.githubusercontent.com/90308363/143241938-e66e7a31-2f6b-407a-8025-419e94ba2f1b.png">
     <img width="1280" alt="Screen Shot 2021-11-24 at 20 15 29" src="https://user-images.githubusercontent.com/90308363/143245381-e5369b55-f951-43c1-b8c8-ec8bfc7f874d.png">
