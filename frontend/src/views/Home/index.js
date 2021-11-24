@@ -18,33 +18,34 @@ export default class Home extends React.Component {
     }
 
     handleAddItemToCart = (item) => {
-    	const newItems = [...this.state.cartItems];
+    	const currentItems = [...this.state.cartItems];
     	const newItem = { ...item };
-    	const targetInd = newItems.findIndex((it) => it.id === newItem.id);
+    	const targetInd = currentItems.findIndex((it) => it.id === newItem.id);
     	if (targetInd < 0){ // newItem belum ada di dalam cartItems
-    	    if (this.state.balance >= newItem.price) {
+    	    if (this.state.balance >= newItem.price) { // balance cukup
                 newItem.inCart = true;
-                newItems.push(newItem);
+                currentItems.push(newItem);
                 this.updateShopItem(newItem, true)
                 this.setState({ balance: this.state.balance - newItem.price });
     	    } else {
     	        alert("Balance not sufficient!");
     	    }
     	}
-    	this.setState({ cartItems: newItems });
+    	this.setState({ cartItems: currentItems });
     };
 
     handleDeleteItemInCart = (item) => {
-            const currentItems = [...this.state.cartItems];
-        	const deletedItem = { ...item };
-        	const targetInd = currentItems.findIndex((it) => it.id === deletedItem.id);
+        const currentItems = [...this.state.cartItems];
+        const deletedItem = { ...item };
+        const targetInd = currentItems.findIndex((it) => it.id === deletedItem.id);
 
-        	currentItems.splice(targetInd, 1);
-        	deletedItem.inCart = false;
-
+        if (targetInd >= 0) { // deletedItem ada di dalam cartItems
+            currentItems.splice(targetInd, 1);
+            deletedItem.inCart = false;
             this.updateShopItem(deletedItem, false)
-            this.setState({ cartItems: currentItems });
             this.setState({ balance: this.state.balance + deletedItem.price });
+        }
+        this.setState({ cartItems: currentItems });
      };
 
     updateShopItem = (item, inCart) => {
@@ -78,7 +79,7 @@ export default class Home extends React.Component {
                 <p className="text-center text-primary">Your Balance: <b> {this.state.balance}</b> </p>
                 <div className="container pt-3">
                     <div className="row mt-3">
-                        {!this.state.cartHidden ? (
+                        {!this.state.cartHidden ? ( // Di halaman cart
                             <div className="col-sm">
                                 <List
                                     title="My Cart"
@@ -86,7 +87,7 @@ export default class Home extends React.Component {
                                     onItemClick={this.handleDeleteItemInCart}
                                 ></List>
                             </div>
-                        ) : <div className="col-sm">
+                        ) : <div className="col-sm"> // Di halaman list
                                 <List
                                     title="List Items"
                                     items={this.state.shopItems}
