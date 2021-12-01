@@ -22,6 +22,7 @@ class ItemList extends Component {
             description: "",
             category: "",
             quantity: 0,
+            qtyInCart: 0,
             cartItems: [],
             cartHidden: true,
         };
@@ -172,30 +173,26 @@ class ItemList extends Component {
     async handleAddToCart(item) {
         const currentItems = [...this.state.cartItems];
         const pickedItem = { ...item };
-        const targetInd = currentItems.findIndex((it) => it.id === pickedItem.id);
-        const jumlah = pickedItem.qtyInCart;
-
-        if (targetInd < 0){ // pickedItem belum ada di dalam cartItems
-            if (pickedItem.quantity >= jumlah) { // quantity cukup
-                currentItems.push(pickedItem);
-                pickedItem.quantity = pickedItem.quantity - jumlah;
-            } else {
-                alert("Stok tidak memenuhi!");
-            }
-        }
-        this.setState({ cartItems: currentItems });
+        const jumlah = this.state.qtyInCart;
 
 //        event.preventDefault();
         try {
-            const data = {
-                quantity: pickedItem.qtyInCart,
-                id_item: pickedItem.id,
-            };
-            await APIConfig.post("/cart", data);
+            if (pickedItem.quantity >= jumlah) { // quantity cukup
+                currentItems.push(pickedItem);
+                pickedItem.quantity = pickedItem.quantity - jumlah;
+                const data = {
+                    quantity: this.state.qtyInCart,
+                    id_item: this.state.id,
+                };
+                await APIConfig.post("/cart", data);
+            } else {
+                alert("Stok tidak memenuhi!");
+            }
         } catch (error) {
             alert("Oops terjadi masalah pada server");
             console.log(error);
         }
+        this.setState({ cartItems: currentItems });
 //        this.handleCancel(event);
     };
 
@@ -283,7 +280,7 @@ class ItemList extends Component {
                                 category={item.category}
                                 quantity={item.quantity}
                                 handleEdit={() => this.handleEditItem(item)}
-                                onItemClick={this.handleAddToCart}
+                                handleAddCart={() => this.handleAddToCart(item)}
                                 />
                             ))}
                         </div>}

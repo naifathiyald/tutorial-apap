@@ -1,10 +1,9 @@
 import React from "react";
 import Button from "../button";
 import classes from "./styles.module.css";
-import ItemList from "../../containers/itemlist";
 
 const Item = (props) => {
-    const { id, title, price, description, category, quantity, handleEdit, handleDelete, qtyInCart, onItemClick} = props;
+    const { id, title, price, description, category, quantity, handleEdit, handleDelete, handleAddCart, qtyInCart } = props;
     return (
         <div className={classes.item}>
             <h3>{`ID ${id}`}</h3>
@@ -24,11 +23,9 @@ const Item = (props) => {
                     className={classes.textField}
                     type="number"
                     placeholder="Qty"
-//                    value={this.state.qtyInCart}
-//                    onChange={this.handleChangeField}
+                    value={qtyInCart}
                 />
-
-            <Button>
+            <Button action={handleAddCart}>
                 Add to Cart
             </Button>
             </div>
