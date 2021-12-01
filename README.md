@@ -2,6 +2,63 @@
 ## Authors
 * **Naifathiya Langitadiva** - *1906299055* - *B*
 
+## Tutorial 7
+### What I have learned today
+1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.  
+    **Soal 1**  
+    <img width="900" alt="no1" src="https://user-images.githubusercontent.com/90308363/143241512-dd53f28f-00a4-4606-b097-23fbd7a7b43f.png">
+    Dibuat fungsi baru, yaitu `handleDeleteItemInCart`. Pada fungsi tsb, dicari tahu index dari item yang ingin dihapus dan 
+    dipanggil method .splice() untuk menghapus item dari array cartItems. Lalu, state dari component diubah karena ada item yang dihapus. 
+    Props dari Item, yaitu inCart, juga diubah untuk menandakan item sudah tidak berada pada cart.  
+    
+    **Soal 2**  
+    <img width="900" alt="no2b" src="https://user-images.githubusercontent.com/90308363/143241778-52573d8c-7fc2-4dc1-a090-d2df71e84e85.png">
+    <img width="900" alt="no2" src="https://user-images.githubusercontent.com/90308363/143241681-0913d6e0-da40-4e76-a876-a9e04156bcae.png">
+    <img width="1280" alt="Screen Shot 2021-11-24 at 20 14 32" src="https://user-images.githubusercontent.com/90308363/143245368-5f6b7193-610a-4b2e-bbff-425eaff86e64.png">
+    Pada fungsi `handleDeleteItemInCart`, disisipkan line untuk mengubah state balance ketika item dari cart dihapus. Balance akan ditambahkan dengan 
+    props price dari item terkait. Pada fungsi `handleAddItemToCart`, juga disisipkan line untuk mengubah stat balance. Balance akan 
+    dikurangi dengan props price dari item terkait.  
+    
+    **Soal 3**  
+    <img width="900" alt="no3" src="https://user-images.githubusercontent.com/90308363/143241938-e66e7a31-2f6b-407a-8025-419e94ba2f1b.png">
+    <img width="1280" alt="Screen Shot 2021-11-24 at 20 15 29" src="https://user-images.githubusercontent.com/90308363/143245381-e5369b55-f951-43c1-b8c8-ec8bfc7f874d.png">
+    Pada fungsi `handleAddItemToCart`, disisipkan if-condition apabila state balance saat ini mencukupi newItem yang ingin ditambahkan. 
+    Jika cukup, maka item akan ditambahkan ke cart. Jika tidak cukup, maka akan masuk ke else dan ditampilkan alert yang memberi tahu 
+    bahwa balance saat ini tidak cukup, item juga gagal untuk ditambahkan ke cart.
+    
+2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?  
+Berdasarkan pemahaman saya, state merupakan sebuah objek yang menyimpan informasi terkait component dan dapat berubah seiring waktu berjalan. 
+Seperti pada tutorial kali ini, kita merubah state ketika aksi-aksi tertentu dilakukan. State juga hanya dapat diakses/diubah di dalam 
+component secara langsung.  Sedangkan, props merupakan objek/komponen yang tidak dapat berubah di dalam komponennya dan hanya dapat dilihat. Props 
+menyimpan nilai dari atribut-atribut komponen. Berbeda dengan state, props dapat melakukan passing data dari suatu komponen ke 
+komponen lain, seperti pada tutorial ketika props dari Item di-pass ke Home.
+3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya.  
+Ya, sebaiknya kita menggunakan component dalam React. Alasannya karena component yang sama dapat digunakan kembali, lalu perubahan dapat terjadi 
+secara instan tanpa perlu reload page-nya. Code juga terlihat lebih rapi dan stabil. Selain itu, aplikasi web yang dinamis jadi lebih 
+mudah dibuat dengan bantuan component-component yang ada.
+4. Apa perbedaan class component dan functional component?  
+   - Functional Component merupakan fungsi JavaScript biasa yang menerima props sebagai argymen dan mengembalikan elemen React. 
+   Sedangkan, Class Component mengharuskan kita untuk extend dari component React dan membuat fungsi render yang mengembalikan 
+   elemen React.
+   - Functional Component tidak menggunakan constructor. Class Component menggunakan constructor untuk menyimpan state.
+   - Functional Component dikenal sebagai stateless component karena hanya menerima dan menampilkan data dalam beberapa bentuk yang 
+   utamanya bertanggung jawab untuk merender UI. Class Component dikenal sebagai stateful component karena diimplementasikan logic dan state.
+5. Dalam react, apakah perbedaan component dan element?  
+   React Component:
+   - Sebuah template, dapat berupa function maupun class dengan method render.
+   - Mengambil props sebagai input dan mengembalikan JSX tree sebagai output
+   - Ketika React melihat element dengan tipe function/class, ia akan berkonsultasi dengan component tersebut untuk mengetahui element mana yang harus dikembalikan, dengan menggunakan props yang sesuai.  
+
+    React Element:
+   - Sebuah hasil pengembalian dari component, yaitu objek yang menjelaskan nodes DOM yang direpresentasikan suatu component.
+   - Dengan functional component, element ini adalah objek yang dikembalikan oleh function tsb.
+   - Dengan class component, element-nya adalah objek yang dikembalikan oleh fungsi render milik component.
+   - Bukan merupakan sesuatu yang dapat dilihat di browser, melainkan objek di memori.
+
+Referensi:  
+https://www.geeksforgeeks.org/differences-between-functional-components-and-class-components-in-react/  
+https://stackoverflow.com/questions/30971395/difference-between-react-component-and-react-element  
+https://www.uxpin.com/studio/blog/reactjs-benefits-and-components/
 
 ## Tutorial 6
 ### What I have learned today
