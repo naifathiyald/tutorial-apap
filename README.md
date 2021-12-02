@@ -2,6 +2,55 @@
 ## Authors
 * **Naifathiya Langitadiva** - *1906299055* - *B*
 
+## Tutorial 8
+### What I have learned today
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian
+   melakukan langkah - langkah tersebut?  
+   Hal yang dilakukan adalah mengosongkan state-nya agar ketika form dibuka, field untuk setiap atributnya kosong. 
+   Caranya dengan menyisipkan kode berikut di function handleAddItem (untuk menampilkan form). 
+    ```
+    this.setState({
+        title: "",
+        price: 0,
+        description: "",
+        category: "",
+        quantity: 0
+    })
+    ```   
+   Selain itu, dari template tutorial juga telah dikosongkan state-nya setiap submit dilakukan.
+   
+2. Jelaskan fungsi dari async dan await!  
+   Async berfungsi untuk memastikan bahwa function tersebut mengembalikan sebuah janji. Sedangkan, await hanya dapat digunakan 
+   pada async function untuk menunggu panggilan janji diselesaikan hingga hasilnya dikembalikan.
+
+3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle
+pada pertanyaan ini.  
+    *Pertama kali npm start dijalankan:*  
+    <img width="879" alt="Screen Shot 2021-12-01 at 14 27 36" src="https://user-images.githubusercontent.com/90308363/144246018-1ca330bb-cfa8-4f4a-b436-768ad776a32f.png">  
+    
+    *Implementasi `handleClickLoading()`:*  
+    <img width="879" alt="Screen Shot 2021-12-01 at 14 34 10" src="https://user-images.githubusercontent.com/90308363/144246352-74c73309-24d9-4569-997b-34c9e8e6ba4f.png">
+    
+    *Mengatasi error pada `shouldComponentUpdate()`:*  
+    <img width="880" alt="Screen Shot 2021-12-01 at 14 36 01" src="https://user-images.githubusercontent.com/90308363/144246361-0866af2f-f890-44d8-a000-4e491f472198.png">
+
+4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount.
+   - `componentDidMount`  dipanggil langsung setelah sebuah komponen dipasang, inisialisasi yang membutuhkan simpul DOM harus diletakkan di sini.  
+   Metode ini digunakan untuk menginisialisasi permintaan jaringan ketika kita perlu memuat data dari endpoint remote.
+   - `shouldComponentUpdate` digunakan untuk memberitahu react bahwa output komponen tidak dipengaruhi oleh perubahan yang terjadi dalam state atau prop. 
+   Metode ini dipanggil dipanggil sebelum proses render ketika nilai baru prop atau state diterima. Metode ini tidak dipanggil dalam proses render awal dan 
+   hanya ada untuk mengoptimalkan kinerja.
+   - `componentDidUpdate` digunakan sebagai kesempatan untuk beroperasi pada DOM ketika komponen diperbarui. Metode ini dapat digunakan 
+     untuk menjalankan pemanggilan jaringan, selama prop saat ini dapat dibandingkan dengan prop sebelumnya. 
+     Metode ini tidakan akan dipanggil jika shouldComponentUpdate() mengembalikan nilai false.
+   - `componentWillReceiveProps` dipanggil sebelum komponen yang dipasang menerima props baru. React hanya memanggil metode ini jika beberapa props komponen mungkin akan diperbarui.   
+   - `componentWillUnmount` dipanggil langsung sebelum komponen dilepas dan dihancurkan. Metode ini digunakan untuk melakukan 
+   pembersihan yang diperlukan, seperti membatalkan permintaan jaringan. Ketika menggunakan metode ini, kita tidak boleh memanggil 
+   setState() karena komponen tidak akan pernah di-render ulang. Setelah komponen dilepas, komponen tersebut tidak akan dipasang kembali.
+
+Referensi:  
+https://id.reactjs.org/docs/react-component.html 
+
 ## Tutorial 7
 ### What I have learned today
 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.  
