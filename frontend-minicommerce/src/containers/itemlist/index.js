@@ -34,6 +34,9 @@ class ItemList extends Component {
         this.handleSubmitEditItem = this.handleSubmitEditItem.bind(this);
         this.handleSearchItem = this.handleSearchItem.bind(this);
         this.handleSubmitSearchItem = this.handleSubmitSearchItem.bind(this);
+        this.handleAddToCart = this.handleAddToCart.bind(this);
+        this.loadCartItems = this.loadCartItems.bind(this);
+        this.handleCheckout = this.handleCheckout.bind(this);
     }
 
     componentDidMount() {
@@ -44,7 +47,10 @@ class ItemList extends Component {
     async loadData() {
         try {
             const { data } = await APIConfig.get("/item");
-            this.setState({ items: data.result });
+            this.setState({
+                cartHidden: true,
+                items: data.result,
+            });
         } catch (error) {
             alert("Oops terjadi masalah pada server");
             console.log(error);
@@ -170,31 +176,71 @@ class ItemList extends Component {
         }
     }
 
-    async handleAddToCart(item) {
-        const currentItems = [...this.state.cartItems];
-        const pickedItem = { ...item };
-        const jumlah = this.state.qtyInCart;
+    async handleAddToCart(event) {
+        event.preventDefault();
+//        const currentCartItems = [...this.state.cartItems];
+//        const pickedItem = { ...item };
+//        const jumlah = this.state.qtyInCart;
+        var totalQtyInCart = 0;
+        this.state.cartItems.map( cartItem => {
+            if (cartItem.id === this.state.id) {
+                totalQtyInCart = totalQtyInCart + cartItem.qtyInCart
+            }
+        })
 
-//        event.preventDefault();
         try {
-            if (pickedItem.quantity >= jumlah) { // quantity cukup
-                currentItems.push(pickedItem);
-                pickedItem.quantity = pickedItem.quantity - jumlah;
+            if ((this.state.quantity - totalQtyInCart) >= this.state.qtyInCart) { // quantity cukup
+//                currentCartItems.push(pickedItem);
+//                pickedItem.quantity = pickedItem.quantity - jumlah;
                 const data = {
                     quantity: this.state.qtyInCart,
                     id_item: this.state.id,
                 };
                 await APIConfig.post("/cart", data);
+                this.loadCartItems();
             } else {
                 alert("Stok tidak memenuhi!");
+                this.setState({
+                    id: "",
+                    title: "",
+                    price: 0,
+                    description: "",
+                    category: "",
+                    quantity: 0,
+                    qtyInCart: 0
+                })
             }
         } catch (error) {
             alert("Oops terjadi masalah pada server");
             console.log(error);
         }
-        this.setState({ cartItems: currentItems });
-//        this.handleCancel(event);
+//        this.setState({ cartItems: currentItems });
+        this.handleCancel(event);
     };
+
+    async loadCartItems() {
+        try {
+            const { data } = await APIConfig.get("/cart");
+            this.setState({
+                cartItems: data.result,
+            })
+        } catch (error) {
+            alert("Oops terjadi masalah pada server");
+            console.log(error);
+        }
+    }
+
+    async handleCheckout() {
+        try {
+            await APIConfig.get("/cart/checkout");
+            alert("Item berhasil di-checkout!")
+            this.loadData();
+            this.setState({ cartItems: [] })
+        } catch (error) {
+            alert("Oops terjadi masalah pada server");
+            console.log(error);
+        }
+    }
 
     handleToggle = () => {
         const cartHidden = this.state.cartHidden;
@@ -210,11 +256,11 @@ class ItemList extends Component {
 
                     {this.state.cartHidden ?
                         <Fab variant="extended" onClick={this.handleToggle}>
-                        <Badge color="secondary">
+                        <Badge color="secondary" badgeContent={this.state.cartItems.length}>
                             <ShoppingCartIcon/>
                         </Badge>
                         </Fab>
-                    : <Button>
+                    : <Button action={this.handleCheckout}>
                           Checkout
                       </Button>}
 
@@ -226,6 +272,19 @@ class ItemList extends Component {
                             Back
                         </Button>
                         <p>Dalam Cart</p>
+                        <div>
+                            {this.state.cartItems.map((cartItem) => (
+                                <Item
+                                key={cartItem.id}
+                                id={cartItem.id}
+                                title={cartItem.title}
+                                price={cartItem.price}
+                                description={cartItem.description}
+                                category={cartItem.category}
+                                qtyInCart={cartItem.qtyInCart}
+                                />
+                            ))}
+                        </div>
                     </div>
                     ) :
                     <div>
@@ -266,9 +325,10 @@ class ItemList extends Component {
                                     />
                                 ))}
                             </div>
-
                         </div>
                         ) :
+
+                        // Tampilan List Item
                         <div>
                             {this.state.items.map((item) => (
                                 <Item
@@ -280,7 +340,7 @@ class ItemList extends Component {
                                 category={item.category}
                                 quantity={item.quantity}
                                 handleEdit={() => this.handleEditItem(item)}
-                                handleAddCart={() => this.handleAddToCart(item)}
+                                handleAddCart={() => this.handleAddToCart}
                                 />
                             ))}
                         </div>}

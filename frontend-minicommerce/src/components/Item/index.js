@@ -3,7 +3,10 @@ import Button from "../button";
 import classes from "./styles.module.css";
 
 const Item = (props) => {
-    const { id, title, price, description, category, quantity, handleEdit, handleDelete, handleAddCart, qtyInCart } = props;
+    const { id, title, price, description, category, quantity, handleEdit, handleDelete, handleAddCart, qtyInCart, cartHidden } = props;
+    var totalHarga = (price * qtyInCart);
+    console.log(cartHidden);
+
     return (
         <div className={classes.item}>
             <h3>{`ID ${id}`}</h3>
